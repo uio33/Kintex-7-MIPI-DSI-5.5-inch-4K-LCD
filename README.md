@@ -37,17 +37,21 @@ Additionally, the design is independent of Vivado IP (excluding inherent FPGA bu
 ```
 The following demo is scaling up to 1080p, which is (2160/2,3840/2).
 
-To demonstrate a proper 4K pixel LCD display a FBC engine is required.
+To demonstrate a proper 4K pixel LCD display a frame-buffer-compression(FBC) i.e. VESA DSC is required.
 
-Simply implementing a 1080p demon can directly using DSC video mode w/o heavily modify the Verilog HDL-design.
+Such simple 1080p demon can directly reuse the existing MIPI-DSI video mode Verilog HDL-design.
 
-The 1080p demo also act as a display-sanity check.
+This 1080p demo also act as a display sanity check.
 ```
 
 ### ToDo
 
 ```
 Implement a FBC-based 4K demo.
+
+The work of a VESA DSC is significantly complicated than the MIPI-DSI video mode itself.
+
+Reference Paper: "Verilog implementation of the VESA DSC compression algorithm" [Carlos Alberto Pereira Ferreira](https://repositorio-aberto.up.pt/bitstream/10216/89000/2/170133.pdf)
 ```
 
 # How to obtain the design?
